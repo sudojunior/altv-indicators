@@ -6,7 +6,7 @@ alt.on("keydown", (key: alt.KeyCode) => {
 	const player = alt.Player.local;
 	const vehicle = player.vehicle;
 
-	if (vehicle === null || vehicle.netOwner.id !== player.id)
+	if (vehicle === null || vehicle.netOwner?.id !== player.id)
 		return;
 
 	// @ts-ignore
