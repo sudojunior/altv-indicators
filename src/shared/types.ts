@@ -30,8 +30,6 @@ export enum VehicleIndicatorLights {
   Interior = 64
 }
 
-export type IndicatorLights = VehicleIndicatorLights;
-
 declare module "alt-shared" {
   export interface ICustomVehicleStreamSyncedMeta {
     [metaKey]: VehicleIndicatorLights;
