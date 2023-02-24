@@ -10,7 +10,8 @@ export const metaKey = "indicatorLights";
 export enum KeyCode {
   "[" = 219,
   "]" = 221,
-  "#" = 222
+  "#" = 222,
+  "`" = 223 // Filler for ./src/client/main.ts#L36 preventing ts(2367) from occurring
 }
 
 /**

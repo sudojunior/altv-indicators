@@ -1,9 +1,10 @@
-import alt from "alt-client";
+import { Entity, Player, Vehicle, on as onEvent, emitServer } from "alt-client";
 
 import { KeyCode, metaKey, VehicleIndicatorLights } from '../shared/types';
 
-alt.on("keydown", (key: alt.KeyCode) => {
-	const player = alt.Player.local;
+// @ts-ignore
+onEvent("keydown", (key: KeyCode) => {
+	const player = Player.local;
 	const vehicle = player.vehicle;
 
 	if (vehicle === null || vehicle.netOwner?.id !== player.id)
@@ -13,20 +14,16 @@ alt.on("keydown", (key: alt.KeyCode) => {
 	let indicatorLights = vehicle.indicatorLights as VehicleIndicatorLights;
 	let indicatorTarget = VehicleIndicatorLights.Off;
 
-	// @ts-ignore
 	if (indicatorLights === VehicleIndicatorLights.BlinkPermBoth && (key === KeyCode["["] || key === KeyCode["]"]))
 		return;
 
 	switch (key) {
-		// @ts-ignore
 		case KeyCode["["]: // Left
 			indicatorTarget = VehicleIndicatorLights.BlinkLeft;
 			break;
-		// @ts-ignore
 		case KeyCode["]"]: // Right
 			indicatorTarget = VehicleIndicatorLights.BlinkRight;
 			break;
-		// @ts-ignore
 		case KeyCode["#"]: // Hazards
 			indicatorTarget = VehicleIndicatorLights.BlinkPermBoth;
 			break;
@@ -34,12 +31,12 @@ alt.on("keydown", (key: alt.KeyCode) => {
 
 	if (indicatorTarget !== VehicleIndicatorLights.Off) {
 		indicatorLights = (indicatorLights & indicatorTarget) ? VehicleIndicatorLights.Off : indicatorTarget;
-		alt.emitServer("indicators:update", vehicle, indicatorLights);
+		emitServer("indicators:update", vehicle, indicatorLights);
 	}
 });
 
-alt.on("streamSyncedMetaChange", (entity: alt.Entity) => {
-	if (!(entity instanceof alt.Vehicle))
+onEvent("streamSyncedMetaChange", (entity: Entity) => {
+	if (!(entity instanceof Vehicle))
 		return;
 
 	// @ts-ignore

@@ -70,6 +70,12 @@ npm run build --ws --if-present
 - [`compatibility` branch](https://github.com/sudojunior/altv-indicators/tree/compatibility)
   > This will attempt to patch the original code, but I will be less likely to provide further support due to its use of `esbuild`.
 
+### Explaining `indicatorTarget`
+
+`indicatorLights` (=`lights`) is the receiver of all that will occur at Line 33. `indicatorTarget` (=`target`) is checking if the bitfield is active.
+
+`lights` will only flip to `OFF / 0` when `target` matches `lights`, otherwise it will be overwritten. The check for `BOTH / 8` is done at Line 17 to assure the hazards remain active as the original code intends.
+
 ## I need more help
 
 Open a scripting question on the alt:V discord.
