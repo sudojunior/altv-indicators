@@ -4,6 +4,10 @@ export const metaKey = "indicatorLights";
 // - While IntelliSense may register them as entries, none of them are there when the server attempts to use them.
 
 /**
+ * A partial filler for what isn't provided in the alt-client import.
+ * If you wish to modify this enum, please check https://keycode.info (press each key you want to use and copy it into the key map) or use https://keycode.info/table - based on the US layout.
+ * *While AltV's documentation may be a source of truth, it is not 100% accurate or accommodating to different keyboard layouts (https://docs.altv.mp/js/api/alt-client.KeyCode.html).*.
+ * 
  * @partial
  * @member {alt-shared}
  */
