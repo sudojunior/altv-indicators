@@ -8,9 +8,9 @@ export const metaKey = "indicatorLights";
  * @member {alt-shared}
  */
 export enum KeyCode {
-  "#" = 222,
   "[" = 219,
-  "]" = 221
+  "]" = 221,
+  "#" = 222
 }
 
 /**
