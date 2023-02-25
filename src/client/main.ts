@@ -1,10 +1,10 @@
-import { Entity, Player, Vehicle, on as onEvent, emitServer } from "alt-client";
+import alt from "alt-client";
 
 import { KeyCode, metaKey, VehicleIndicatorLights } from '../shared/types';
 
 // @ts-ignore
-onEvent("keydown", (key: KeyCode) => {
-	const player = Player.local;
+alt.on("keydown", (key: KeyCode) => {
+	const player = alt.Player.local;
 	const vehicle = player.vehicle;
 
 	if (vehicle === null || vehicle.netOwner?.id !== player.id)
@@ -31,12 +31,12 @@ onEvent("keydown", (key: KeyCode) => {
 
 	if (indicatorTarget !== VehicleIndicatorLights.Off) {
 		indicatorLights = (indicatorLights & indicatorTarget) ? VehicleIndicatorLights.Off : indicatorTarget;
-		emitServer("indicators:update", vehicle, indicatorLights);
+		alt.emitServer("indicators:update", vehicle, indicatorLights);
 	}
 });
 
-onEvent("streamSyncedMetaChange", (entity: Entity) => {
-	if (!(entity instanceof Vehicle))
+alt.on("streamSyncedMetaChange", (entity: alt.Entity) => {
+	if (!(entity instanceof alt.Vehicle))
 		return;
 
 	// @ts-ignore

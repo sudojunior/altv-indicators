@@ -1,8 +1,8 @@
-import { Player, Vehicle, onClient } from "alt-server";
+import alt from "alt-server";
 
 import { metaKey, VehicleIndicatorLights } from "../shared/types";
 
-onClient("indicators:update", (player: Player, vehicle: Vehicle, indicatorLights: VehicleIndicatorLights) => {
+alt.onClient("indicators:update", (player: alt.Player, vehicle: alt.Vehicle, indicatorLights: VehicleIndicatorLights) => {
 	if (vehicle.driver?.id !== player.id) return;
 
 	vehicle.setStreamSyncedMeta(metaKey, indicatorLights);
