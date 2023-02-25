@@ -7,5 +7,3 @@ alt.onClient("indicators:update", (player: alt.Player, vehicle: alt.Vehicle, ind
 
 	vehicle.setStreamSyncedMeta(metaKey, indicatorLights);
 });
-
-console.log("> [altv-os-indicators] loaded server/main.ts");
