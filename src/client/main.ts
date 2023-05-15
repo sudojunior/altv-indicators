@@ -1,6 +1,6 @@
 import alt from "alt-client";
 
-import { KeyCode, metaKey, VehicleIndicatorLights } from '../shared/types';
+import { KeyCode, metaKey, VehicleIndicatorLights } from "../shared/types.js";
 
 // @ts-ignore
 alt.on("keydown", (key: KeyCode) => {
