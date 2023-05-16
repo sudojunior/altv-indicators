@@ -6,10 +6,7 @@ alt.onClient("indicators:update", (player: alt.Player, vehicle: alt.Vehicle, ind
 	if (vehicle.driver?.id !== player.id) return;
 
 	vehicle.setStreamSyncedMeta(metaKey, indicatorLights);
-
-	if (vehicle.attached) {
-		vehicle.attached.setStreamSyncedMeta(metaKey, indicatorLights);
-	}
+	vehicle.attached?.setStreamSyncedMeta(metaKey, indicatorLights);
 });
 
 alt.on('vehicleAttach', (attachedVehicle, vehicle) => {
@@ -23,4 +20,4 @@ alt.on('vehicleDetach', (detachedVehicle) => {
 	if (detachedVehicle.hasStreamSyncedMeta(metaKey)) {
 		detachedVehicle.deleteStreamSyncedMeta(metaKey);
 	}
-})
+});
